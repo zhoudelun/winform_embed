@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Accs>
+  <Acc key="Acc1" name="光刻车间">
+    <Service ProcessID="22356" MainWindowHandle="15207624" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="15208" MainWindowHandle="202786" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="12872" MainWindowHandle="985388" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+  <Acc key="Acc2" name="探针车间">
+    <Service ProcessID="8492" MainWindowHandle="5311330" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="22720" MainWindowHandle="4919634" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="14624" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+  <Acc key="Acc3" name="车间3">
+    <Service ProcessID="12892" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="12096" MainWindowHandle="4264626" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="5416" MainWindowHandle="3543738" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+  <Acc key="Acc4" name="车间4">
+    <Service ProcessID="12892" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="15252" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="14624" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+  <Acc key="Acc5" name="车间5">
+    <Service ProcessID="14876" MainWindowHandle="0" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="16024" MainWindowHandle="5771916" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="14624" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+  <Acc key="Acc6" name="车间6">
+    <Service ProcessID="12892" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="22996" MainWindowHandle="1705596" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="18016" MainWindowHandle="4788040" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+  <Acc key="Acc7" name="车间7">
+    <Service ProcessID="12892" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="15252" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="24284" MainWindowHandle="3083066" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+  <Acc key="Acc8" name="车间8">
+    <Service ProcessID="12892" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="19512" MainWindowHandle="1706238" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="14624" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+  <Acc key="Acc9" name="车间9">
+    <Service ProcessID="12892" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe" name="Service">
+    </Service>
+    <Monitor ProcessID="15252" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" name="Monitor">
+    </Monitor>
+    <Config ProcessID="14624" MainWindowHandle="-1" embedResult="0" addrUrl="C:\Users\Administrator\Downloads\article_src\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe" name="Config">
+    </Config>
+  </Acc>
+</Accs>
