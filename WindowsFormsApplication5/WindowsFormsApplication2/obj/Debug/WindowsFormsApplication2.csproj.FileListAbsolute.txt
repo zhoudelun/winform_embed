@@ -1,0 +1,8 @@
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.pdb
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form1.resources
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Properties.Resources.resources
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csproj.GenerateResource.Cache
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb

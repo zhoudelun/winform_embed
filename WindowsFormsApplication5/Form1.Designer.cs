@@ -33,6 +33,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.appBox = new SmileWei.EmbeddedApp.AppContainer();
+            this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 9);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(122, 665);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(150, 624);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel2
@@ -52,7 +53,8 @@
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.Info;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel2.TabIndex = 0;
@@ -67,11 +69,21 @@
             this.appBox.AppFilename = "";
             this.appBox.AppProcess = null;
             this.appBox.AutoSize = true;
-            this.appBox.Location = new System.Drawing.Point(135, 13);
+            this.appBox.Location = new System.Drawing.Point(162, 9);
             this.appBox.Name = "appBox";
             this.appBox.ShowEmbedResult = false;
-            this.appBox.Size = new System.Drawing.Size(337, 658);
+            this.appBox.Size = new System.Drawing.Size(310, 662);
             this.appBox.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(9, 648);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "设置";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -79,6 +91,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(484, 683);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.appBox);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Form1";
@@ -98,7 +111,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private SmileWei.EmbeddedApp.AppContainer appBox; 
+        private SmileWei.EmbeddedApp.AppContainer appBox;
+        private System.Windows.Forms.Button button1; 
     }
 }
 

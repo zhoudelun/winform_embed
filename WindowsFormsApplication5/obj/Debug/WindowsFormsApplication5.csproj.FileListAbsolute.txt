@@ -17,7 +17,13 @@ E:\mygitPro\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.pdb
 E:\mygitPro\WindowsFormsApplication5\bin\Debug\Resource\InterfaceResource.xml
 E:\mygitPro\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
 E:\mygitPro\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
-E:\mygitPro\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.csprojResolveAssemblyReference.cache
 E:\mygitPro\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Form1.resources
 E:\mygitPro\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Properties.Resources.resources
 E:\mygitPro\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.csproj.GenerateResource.Cache
+E:\mygitPro\WindowsFormsApplication5\bin\Debug\AppContainer.bmp
+E:\mygitPro\WindowsFormsApplication5\bin\Debug\SmileWei.EmbeddedApp.dll
+E:\mygitPro\WindowsFormsApplication5\bin\Debug\SmileWei.EmbeddedApp.pdb
+E:\mygitPro\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.csprojResolveAssemblyReference.cache
+E:\mygitPro\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.MenuConfigForm.resources
+E:\mygitPro\WindowsFormsApplication5\bin\Debug\SunnyUI.Common.dll
+E:\mygitPro\WindowsFormsApplication5\bin\Debug\SunnyUI.dll

@@ -3,6 +3,7 @@ using SmileWei.EmbeddedApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -44,8 +45,15 @@ namespace WindowsFormsApplication5
             //添加 9个button
             for (int i = 1; i < count + 1; i++)
             {
-                var b = new Button();
-                b.Text = "btn_" + i;
+                var b = new Button(); 
+                b.Width = this.flowLayoutPanel1.Width;
+                b.Height = 35;
+                b.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                b.UseVisualStyleBackColor = true;
+                b.Margin = new System.Windows.Forms.Padding(0);
+                b.Padding = new System.Windows.Forms.Padding(0);
+                b.Text = list[i-1].name; //"btn_" + i;
+                b.Name = "btn_" + i;
                 b.Click += new System.EventHandler(Btn_Clicked);
                 this.flowLayoutPanel1.Controls.Add(b);
             }
@@ -57,10 +65,17 @@ namespace WindowsFormsApplication5
                 var accmodel = list[i - 1];
                 string key = accmodel.key;
 
-                //每组 包含3个label 
-                for (int j = 1; j < 3 + 1; j++)
+                //每组 包含3个label ,后改成button了
+                for (int j = 1; j <  accmodel.Child.Length + 1; j++)
                 {
-                    var l = new Label(); 
+                    var l = new Button(); 
+                    l.TextAlign = ContentAlignment.MiddleLeft;
+                    l.Margin = new System.Windows.Forms.Padding(0);
+                    l.Padding = new System.Windows.Forms.Padding(0);
+                    l.FlatStyle = FlatStyle.Flat;
+                    l.FlatAppearance.BorderSize = 1;
+
+                    l.Width= this.flowLayoutPanel1 .Width;
                     var child= MakeProcessChild(j,accmodel);
 
                     bool liveStatus = GetRunning (child);
@@ -112,14 +127,14 @@ namespace WindowsFormsApplication5
             string text= mi.Text;
             string name = mi.Name; 
             //根据sender的Name属性来区分是点了哪个了菜单，写相应的事件处理代码
-            MessageBox.Show(((MenuItem)sender).Name);
+            //MessageBox.Show(((MenuItem)sender).Name);
 
             //开关相应的程序
             //如果成功修改状态
             var controls= this.flowLayoutPanel2.Controls;
             foreach (var item in controls)
 	        {
-                Label l =(Label) item;
+                Button l = (Button)item;
                 if(l.Name==name)
                 {
                     if(text=="开启"){
@@ -240,16 +255,13 @@ namespace WindowsFormsApplication5
         //初始化 
         List<AccModel> list;
         private void Form1_Load(object sender, EventArgs e)
-        {
+        { 
+            //初始化自定义资源 
+            list = MyResourceManager.Init();
 
-            //初始化自定义资源
-            MyResourceManager.Init();
-            list = MyResourceManager._Interfaces;
-
-            InitButtonMenu3(list); 
-        }
-
-
+            InitButtonMenu3(list);
+            MakeNewParent();
+        } 
 
         private void ComBox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -266,13 +278,13 @@ namespace WindowsFormsApplication5
         {
             var btn = (Button)sender;
             //MessageBox.Show(a.Text.ToString());
-            int i= int.Parse( btn.Text.Substring(btn.Text.Length - 1)); 
+            int i = int.Parse(btn.Name.Substring(btn.Name.Length - 1)); 
             int btnIndex=btn.TabIndex ;
             foreach (var f in this.flowLayoutPanel2.Controls)
             {
-                if (f is Label)
+                if (f is Button)
                 {
-                    var l = f as Label;
+                    var l = f as Button;
 
                     if (l.Name.Split(',')[0] == list[i - 1].key)
                     {
@@ -305,8 +317,8 @@ namespace WindowsFormsApplication5
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Label_Clicked(object sender, EventArgs e)
-        { 
-            var a = (Label)sender; 
+        {
+            var a = (Button)sender; 
             if (a.BackColor == Color.Green)
             {
                 var arrayName = a.Name .Split(',');
@@ -324,7 +336,7 @@ namespace WindowsFormsApplication5
         /// <param name="e"></param>
         private void Label_MouseDown(object sender, MouseEventArgs e)
         {
-            var a = (Label)sender;
+            var a = (Button)sender;
             if (e.Button  == MouseButtons.Left)
             {
                 if (a.BackColor == Color.Green)
@@ -520,35 +532,22 @@ namespace WindowsFormsApplication5
                 }
                 else
                 {
-                    var isExist = IsWindowExist((IntPtr) int.Parse( accprocess.MainWindowHandle));
-                    if (isExist)
-                    { 
-                        return UpdateList(id);
-                    }
-                    return false;
+                    //窗体检查并不准确
+                    //var isExist = IsWindowExist((IntPtr) int.Parse( accprocess.MainWindowHandle));
+                    //if (isExist)
+                    //{ 
+                    //    return UpdateList(id);
+                    //}
+                    //return false;
+                    UpdateList(id);
+                    return true;
                 }
             }
             return false;
             
-        }
+        } 
 
         /// <summary>
-        /// 判断窗口是否存在
-        /// </summary>
-        /// <param name="handle"></param>
-        /// <returns></returns>
-        private bool IsWindowExist(IntPtr handle)
-        {
-            return (!(GetWindow(new HandleRef(this, handle), 4) != IntPtr.Zero) && IsWindowVisible(new HandleRef(this, handle)));
-        }
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
-        public static extern IntPtr GetWindow(HandleRef hWnd, int uCmd);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern bool IsWindowVisible(HandleRef hWnd);
-       
-    /// <summary>
         /// 修改process
         /// path为标准
         /// </summary>
@@ -615,23 +614,16 @@ namespace WindowsFormsApplication5
         
         #endregion
 
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //修改xml
             MyResourceManager. WriteResource();
-
-            ProcessStartInfo info = new ProcessStartInfo(@"C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe");
-            info.UseShellExecute = true;
-            
-            info.WindowStyle = ProcessWindowStyle.Minimized;
-           // info.WindowStyle = ProcessWindowStyle.Hidden;
-            var  AppProcess = System.Diagnostics.Process.Start(info);
-            // Wait for process to be created and enter idle condition
-            AppProcess.WaitForInputIdle();
-
-          
-            Thread.Sleep(200);
-            var newParent = AppProcess.MainWindowHandle;
+            var newParent = parentHandle;
 
             foreach (var item in list)
 	        {
@@ -647,6 +639,119 @@ namespace WindowsFormsApplication5
 	        }
             //MessageBox.Show("88");
         }
+        static IntPtr parentHandle = IntPtr.Zero;
 
+        /// <summary>
+        /// 创建新父窗体
+        /// </summary>
+        /// <returns></returns>
+        private   IntPtr MakeNewParent()
+        {
+            if (parentHandle != IntPtr.Zero)
+            {
+                return parentHandle;
+            }
+
+            Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string path =   config.AppSettings.Settings["EmptyFormPath"].Value;
+            string name="";
+            //如果窗体存在,不用新启动
+            var mc = Regex.Match(path, @"[^\\|^/]+$");
+            if (mc.Success)
+            {
+                name = mc.Value.Replace(".exe","");
+            }
+            Process[] p = System.Diagnostics.Process.GetProcessesByName(name);
+               IntPtr newParent = IntPtr.Zero;
+            if (p != null)
+            { 
+                bool exist= false;
+                foreach (var item in p)
+	            {
+                    exist=IsWindowExist(   item.MainWindowHandle);
+                    if(exist){
+                     newParent= item.MainWindowHandle;
+                        break;
+                    }
+
+	            }
+            }
+
+            if( newParent == IntPtr.Zero)
+            { 
+                ProcessStartInfo info = new ProcessStartInfo(path);
+                info.UseShellExecute = true;
+
+                info.WindowStyle = ProcessWindowStyle.Minimized;
+                // info.WindowStyle = ProcessWindowStyle.Hidden;
+                var AppProcess = System.Diagnostics.Process.Start(info);
+                // Wait for process to be created and enter idle condition
+                AppProcess.WaitForInputIdle();
+
+                Thread.Sleep(200);
+                newParent = AppProcess.MainWindowHandle;
+            }
+            parentHandle = newParent;
+            return newParent;
+        }
+
+        #region Win32API
+        /// <summary>
+        /// 判断窗口是否存在
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <returns></returns>
+        private bool IsWindowExist(IntPtr handle)
+        {
+            return (!(GetWindow(new HandleRef(this, handle), 4) != IntPtr.Zero) && IsWindowVisible(new HandleRef(this, handle)));
+        }
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetWindow(HandleRef hWnd, int uCmd);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern bool IsWindowVisible(HandleRef hWnd);
+
+        ///// <summary>
+        ///// 获取应用程序窗口句柄
+        ///// </summary>
+        ///// <param name="processId"></param>
+        ///// <returns></returns>
+        //private IntPtr GetWindowHandle(int processId)
+        //{
+        //    var windowHandle = IntPtr.Zero;
+        //    EnumThreadWindowsCallback windowsCallback = new EnumThreadWindowsCallback(FindMainWindow);
+        //    EnumWindows(windowsCallback, IntPtr.Zero);
+        //    //保持循环
+        //    GC.KeepAlive(windowsCallback);
+
+        //    bool FindMainWindow(IntPtr handle, IntPtr extraParameter)
+        //    {
+        //        int num;
+        //        GetWindowThreadProcessId(new HandleRef(this, handle), out num);
+        //        if (num == processId && IsWindowExist(handle))
+        //        {
+        //            windowHandle = handle;
+        //            return true;
+        //        }
+        //        return false;
+        //    }
+
+        //    return windowHandle;
+        //}
+        public delegate bool EnumThreadWindowsCallback(IntPtr hWnd, IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool EnumWindows(EnumThreadWindowsCallback callback, IntPtr extraData);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern int GetWindowThreadProcessId(HandleRef handle, out int processId);
+        #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MenuConfigForm dialog = new MenuConfigForm();
+            dialog.Show(); 
+        }
     }
 }

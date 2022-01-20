@@ -23,23 +23,12 @@ namespace iPlant.IEMS.Util
         /// <summary>
         /// 9个实例
         /// </summary>
-        public string key { get; set; }
-
-        /// <summary>
-        /// 地址exe
-        /// </summary>
-        public string addrUrl { get; set; }
+        public string key { get; set; } 
 
         /// <summary>
         /// 名称
         /// </summary>
-        public string name { get; set; }
-
-        /// <summary>
-        /// 进程id
-        /// -1表示未运行
-        /// </summary>
-        public int ProcessID { get; set; }
+        public string name { get; set; } 
 
         /// <summary>
         /// 服务组合
