@@ -284,7 +284,7 @@ namespace iPlant.IEMS.Util
                     {
                         foreach (XmlNode item in node1.ChildNodes)
                         {
-                            if (item.Name == app.name)
+                            if (item.Attributes["name"].Value == app.name)
                             {
                                 node1.RemoveChild(item);
                                 break;
@@ -331,13 +331,14 @@ namespace iPlant.IEMS.Util
                     {
                         foreach (XmlNode item in node1.ChildNodes)
                         {
-                            if (item.Name == oldName)
+                            if (item.Attributes.GetNamedItem("name").Value == oldName)
                             {
                                 item.Attributes.GetNamedItem("name").Value = app.name;  
                                 item.Attributes.GetNamedItem("ProcessID").Value = app.ProcessID.ToString();
                                 item.Attributes.GetNamedItem("MainWindowHandle").Value = app.MainWindowHandle;
                                 item.Attributes.GetNamedItem("embedResult").Value = app.embedResult.ToString();
                                 item.Attributes.GetNamedItem("addrUrl").Value = app.addrUrl;
+                                 
                                 break;
                             }
                         }

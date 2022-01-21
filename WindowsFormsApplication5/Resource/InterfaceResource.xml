@@ -1,15 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Accs>
-  <Acc key="Acc1" name="车间1">
-    <service name="service" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\mygitPro\EmptyForm\bin\Debug\EmptyForm.exe" />
-    <service2 name="service2" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe" />
+  <Acc key="Acc1" name="x222333445">
+    <service name="service2" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\mygitPro\EmptyForm\bin\Debug\EmptyForm.exe" />
+    <service2 name="e" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\mygitPro\EmptyForm\bin\Debug\EmptyForm1.exe" />
   </Acc>
   <Acc key="Acc2" name="车间2">
-    <monitor name="monitor" ProcessID="26056" MainWindowHandle="1248438" embedResult="0" addrUrl="E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe" />
-    <ss name="ss" ProcessID="46208" MainWindowHandle="725472" embedResult="0" addrUrl="E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" />
-    <cc name="cc" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\mygitPro\EmptyForm\bin\Debug\EmptyForm.exe" />
-    <ccdd name="ccdd" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="fewefw" />
+    <monitor name="WindowsFormsApplication3" ProcessID="5104" MainWindowHandle="5640226" embedResult="0" addrUrl="E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication3.exe" />
+    <ss name="WindowsFormsApplication2" ProcessID="5104" MainWindowHandle="5640226" embedResult="0" addrUrl="E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe" />
+    <cc name="EmptyForm" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\mygitPro\EmptyForm\bin\Debug\EmptyForm.exe" />
+    <ccdd name="Monitor" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\ACC\ACC.Console\ACC.Monitor\ACC.Monitor.exe" />
+    <z1 name="config" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\ACC\ACC.Config\ACC.Config.exe" />
+    <WindowsFormsApplication1.exe name="WindowsFormsApplicationTest" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication1.exe" />
+    <service name="service" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="E:\ACC\ACC.Server\ACC.Server.exe" />
   </Acc>
-  <Acc key="Acc3" name="车间3" />
-  <Acc key="Acc4" name="车间4" />
+  <Acc key="Acc8" name="车间23">
+    <awef name="awef23" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="wew3" />
+  </Acc>
+  <Acc key="Acc10" name="cejian2">
+    <faw name="faw" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="C:\Windows\explorer.exe" />
+    <faw234 name="faw234" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="C:\Windows\explorer.exe" />
+    <faw23452 name="faw23452" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="C:\Windows\explorer.exe" />
+    <w name="w2" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="fe2" />
+  </Acc>
+  <Acc key="Acc13" name="x222333443">
+    <we name="we" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="awe" />
+  </Acc>
+  <Acc key="Acc14" name="a">
+    <f1 name="f1" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="f1" />
+    <f2 name="f22" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="f223" />
+  </Acc>
+  <Acc key="Acc15" name="b">
+    <ee name="ee" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="fe" />
+    <dcc name="dcc" ProcessID="0" MainWindowHandle="0" embedResult="0" addrUrl="x" />
+  </Acc>
 </Accs>

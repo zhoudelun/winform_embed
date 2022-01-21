@@ -103,6 +103,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icon_设置.png" />
+    <None Include="Resources\保存.png" />
+    <None Include="Resources\添加.png" />
+    <None Include="Resources\停用.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\浏览.png" />
+    <None Include="Resources\取消移动.png" />
+    <None Include="Resources\Close.png" />
+    <None Include="Resources\开始.png" />
+    <None Include="Resources\配置.png" />
+    <None Include="Resources\查询.png" />
+    <None Include="Resources\微信图片_20220121145348.png" />
+    <None Include="Resources\Add.png" />
+    <None Include="Resources\Add1.png" />
+    <None Include="Resources\Close1.png" />
+    <None Include="Resources\delete1.png" />
+    <None Include="Resources\edit1.png" />
+    <None Include="Resources\Setting.png" />
+    <None Include="Resources\保存1.png" />
+    <None Include="Resources\开始1.png" />
+    <None Include="Resources\停用1.png" />
     <Content Include="Resource\InterfaceResource.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

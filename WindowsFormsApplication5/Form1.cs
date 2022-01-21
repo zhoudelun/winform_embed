@@ -39,8 +39,30 @@ namespace WindowsFormsApplication5
         /// <summary>
         /// 初始化菜单
         /// </summary>
-        void InitButtonMenu3(List<AccModel> list )
+       public void InitButtonMenu3(List<AccModel> list )
         {
+            ////移除所有菜单
+            //foreach (Control item in flowLayoutPanel1.Controls)
+            //{
+            //    if (    item is  FlowLayoutPanel) 
+            //    {
+            //        continue;
+            //    }
+            //    this.flowLayoutPanel1.Controls.Remove(item);
+            //}
+
+            for (int i = 0; i < flowLayoutPanel1.Controls.Count; i++)
+            { 
+                var item = flowLayoutPanel1.Controls[i];
+                if (item is FlowLayoutPanel) 
+                {
+                    continue;
+                }
+                this.flowLayoutPanel1.Controls.Remove(item);
+                i--;
+            }
+            
+            flowLayoutPanel2.Controls.Clear();
             int count = list.Count();
             //添加 9个button
             for (int i = 1; i < count + 1; i++)
@@ -85,6 +107,7 @@ namespace WindowsFormsApplication5
                     var cm=new System.Windows.Forms.ContextMenu(); 
                     l.ContextMenu = cm;
                     var myItem = new MenuItem();
+                     
                     myItem.Text = liveStatus? "关闭":"开启";
                     myItem.Name = key + "," + j;// i + "," + j;
                     myItem.Click += new EventHandler(CustomItem_Click);////这里为子菜单添加Click事件
@@ -278,7 +301,7 @@ namespace WindowsFormsApplication5
         {
             var btn = (Button)sender;
             //MessageBox.Show(a.Text.ToString());
-            int i = int.Parse(btn.Name.Substring(btn.Name.Length - 1)); 
+            int i = int.Parse(btn.Name.Replace("btn_","")); 
             int btnIndex=btn.TabIndex ;
             foreach (var f in this.flowLayoutPanel2.Controls)
             {
@@ -670,7 +693,7 @@ namespace WindowsFormsApplication5
 	            {
                     exist=IsWindowExist(   item.MainWindowHandle);
                     if(exist){
-                     newParent= item.MainWindowHandle;
+                        newParent= item.MainWindowHandle;
                         break;
                     }
 
@@ -748,10 +771,27 @@ namespace WindowsFormsApplication5
         public static extern int GetWindowThreadProcessId(HandleRef handle, out int processId);
         #endregion
 
+        /// <summary>
+        /// 设置菜单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             MenuConfigForm dialog = new MenuConfigForm();
-            dialog.Show(); 
+            dialog.TitleChanged = new MenuConfigForm.TitleChangedHandler(FormTitleChanged);
+            
+            //dialog.Show();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                InitButtonMenu3(list); //子窗体关闭触发刷新菜单
+            }
+        }
+
+        protected void FormTitleChanged(string title)
+        { 
+            this.Text = title;
+            //InitButtonMenu3(list); 
         }
     }
 }

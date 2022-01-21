@@ -1,0 +1,8 @@
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe.config
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.pdb
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csprojResolveAssemblyReference.cache
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.exe
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.pdb

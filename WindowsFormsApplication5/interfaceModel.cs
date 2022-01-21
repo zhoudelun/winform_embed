@@ -35,29 +35,7 @@ namespace iPlant.IEMS.Util
         /// </summary>
         public AddrProcess[] Child { get; set; }
     }
-
-    /// <summary>
-    /// 组合
-    /// </summary>
-    public class ServiceMonitorConfigGroup
-    {
-        /// <summary>
-        /// 服务
-        /// </summary>
-        public AddrProcess Service { get; set; }
-
-        /// <summary>
-        /// 监视
-        /// </summary>
-        public AddrProcess Monitor { get; set; }
-
-        /// <summary>
-        /// 配置
-        /// </summary>
-        public AddrProcess Config { get; set; }
-
-    }
-
+     
     /// <summary>
     /// 位置线程
     /// </summary>

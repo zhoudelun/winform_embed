@@ -15,6 +15,10 @@ namespace WindowsFormsApplication5
 {
     public partial class MenuConfigForm : Form
     {
+        public delegate void TitleChangedHandler(string title);
+
+        public TitleChangedHandler TitleChanged;
+
         public MenuConfigForm()
         {
             InitializeComponent();
@@ -53,7 +57,8 @@ namespace WindowsFormsApplication5
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)  //鼠标点击节点触发的事件
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)  //单击鼠标左键才响应
-            { 
+            {
+                HideForm();
                 if (e.Node.Level == 1) //判断子节点才响应
                 {
                     var acc = e.Node.Tag as AddrProcess;
@@ -63,6 +68,22 @@ namespace WindowsFormsApplication5
                     txtHandle.Text = acc.MainWindowHandle;
                     btnAddChild.Enabled = true;
                     btnAddRootNode.Enabled = false;
+
+                    HidePanel(panel2);
+                    lbTips.Text = "修改服务";
+                    lbTips.Show();
+                    lbWorkShop.Show();
+                    tbWorkShopTip.Text = e.Node.Parent.Text;
+                    tbWorkShopTip.Enabled = false;
+                    tbWorkShopTip.Visible = true;
+                    lbWorkShopTip.Visible = true;
+                    lbService.Visible = true;
+                    lbAddrUrl.Visible = true;
+                    btnChoose.Visible = true;
+                    txtAddrUrl.Visible = true;
+                    txtServiceName.Visible = true;
+                    btnEditService.Visible = true;
+                    btnDeleteService.Visible = true;
                 }
                 else
                 {
@@ -71,7 +92,18 @@ namespace WindowsFormsApplication5
                     txtHandle.Text = "";
                     txtProcessID.Text = "";
                     btnAddChild.Enabled = true;
-                    btnAddRootNode.Enabled = true; 
+                    btnAddRootNode.Enabled = true;
+
+                    HidePanel(panel1);
+                    lbTips.Text = "修改车间";
+                    lbTips.Show(); 
+                    lbWorkShop.Visible = true;
+                    txtNodeName.Visible = true; 
+                    btnShowAddService.Visible = true;
+                    btnShowAddService.Show();
+                    btnEditWorkShop.Visible = true;
+                    btnDeleteWorkShop.Visible = true;
+
                 }
             }    
         }
@@ -94,6 +126,7 @@ namespace WindowsFormsApplication5
             ////初始化自定义资源 
             list = MyResourceManager.Init(); 
             setTreeView();
+            HideForm();
         }
 
         /// <summary>
@@ -238,13 +271,14 @@ namespace WindowsFormsApplication5
             {
                 MessageBox.Show("请选择节点");
                 return;
-            }
-            MessageBox.Show("");
-            string name = txtNodeName.Text.Trim(); 
+            } 
+            string name = txtNodeName.Text.Trim();
+            object tag = new object();
             var node = new AccModel();
             string oldName = "";//子name
             if (treeView1.SelectedNode.Level == 0)
             {
+                tag = treeView1.SelectedNode.Tag.ToString();
                 node.key = treeView1.SelectedNode.Tag.ToString();
                 node.name = name;
             }
@@ -266,20 +300,27 @@ namespace WindowsFormsApplication5
                 if (!string.IsNullOrEmpty(txtHandle.Text.Trim()))
                 {
                     handle = txtHandle.Text.Trim();
-                }
+                } 
                 node.Child = new AddrProcess[] { new AddrProcess { name = name, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, addrUrl = txtAddrUrl.Text.Trim() } };
+                tag = new AddrProcess { name = name, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, addrUrl = txtAddrUrl.Text.Trim() };
             }
             MyResourceManager.EditResource(node,oldName);
             treeView1.SelectedNode.Text = name;
+            treeView1.SelectedNode.Tag = tag;
             MyResourceManager.Init(); 
         }
 
+        /// <summary>
+        /// 浏览
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChoose_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
-            //openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.Filter = "exe文件(*.exe)|*.exe";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -287,7 +328,89 @@ namespace WindowsFormsApplication5
                 txtAddrUrl.Text=  openFileDialog1.FileName ;
             }
         }
-         
-         
+
+        /// <summary>
+        /// 触发显示添加车间界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddSetting_Click(object sender, EventArgs e)
+        {
+            HideForm();
+            HidePanel(panel1);
+            lbWorkShop.Visible = true;
+            txtNodeName.Text = "";
+            txtNodeName.Visible = true;
+            btnAddRootNode.Visible = true;
+            lbTips.Text = "新增车间";
+            lbTips.Show();
+        }
+
+        /// <summary>
+        /// 隐藏所有form控件
+        /// </summary>
+        void HideForm()
+        {
+            lbTips.Visible = false;
+            panel1.Visible = false;
+            panel2.Visible = false; 
+        }
+
+        /// <summary>
+        /// 隐藏panel
+        /// </summary>
+        /// <param name="panel"></param>
+        void HidePanel(Panel panel)
+        {
+            panel.Visible = true;
+            foreach (Control item in panel.Controls)
+            {
+                item.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// 显示添加服务界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        { 
+            HideForm();
+            HidePanel(panel2);
+            lbWorkShopTip.Visible = true;
+            tbWorkShopTip.Text = txtNodeName.Text;
+            tbWorkShopTip.Visible = true;
+            lbService.Visible = true;
+            txtServiceName.Visible = true;
+            txtServiceName.Text = "";
+            lbAddrUrl.Visible = true;
+            txtAddrUrl.Visible = true;
+            txtAddrUrl.Text = "";
+            btnChoose.Visible = true;
+            btnAddChild.Visible = true;
+            lbTips.Text = "添加服务";
+            lbTips.Show();
+        }
+
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuConfigForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //初始化自定义资源 
+            list = MyResourceManager.Init();
+
+            //Form1 form1 = new Form1();
+            //form1.InitButtonMenu3(list);
+            if (TitleChanged != null) 
+                TitleChanged("Test Title"); //委托调用
+
+            
+            DialogResult = DialogResult.OK;
+            
+        }
     }
 }
