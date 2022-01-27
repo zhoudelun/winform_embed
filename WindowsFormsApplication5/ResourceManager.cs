@@ -75,7 +75,7 @@ namespace iPlant.IEMS.Util
 			    {
 			       var service=  element.ChildNodes[i].Attributes; 
                     childs.Add(
-                        new AddrProcess { key = key, ProcessID = int.Parse(service["ProcessID"].Value), MainWindowHandle =  service["MainWindowHandle"].Value , addrUrl = service["addrUrl"].Value, name = service["name"].Value }
+                        new AddrProcess { key = key, ProcessID = int.Parse(service["ProcessID"].Value), MainWindowHandle = service["MainWindowHandle"].Value, addrUrl = service["addrUrl"].Value, name = service["name"].Value, FullScreen = int.Parse( service["FullScreen"].Value ) }
                         );
 			    }  
                 //var service= element.ChildNodes.Item(0).Attributes;
@@ -125,6 +125,7 @@ namespace iPlant.IEMS.Util
             }
             return "Acc"+ ++temp;
         }
+
         /// <summary>
         /// 重新开启 写入xml 
         /// </summary>
@@ -146,7 +147,7 @@ namespace iPlant.IEMS.Util
 
                     foreach (XmlNode node2 in node1.ChildNodes)
                     {
-                        if (node2.Name == app.name )
+                        if (node2.Attributes.GetNamedItem("name").Value == app.name)
                         {
                             node2.Attributes.GetNamedItem("ProcessID").Value = app.ProcessID.ToString();
                             node2.Attributes.GetNamedItem("MainWindowHandle").Value = app.MainWindowHandle.ToString();
@@ -241,6 +242,7 @@ namespace iPlant.IEMS.Util
                         elem.SetAttribute("MainWindowHandle", app.MainWindowHandle);
                         elem.SetAttribute("embedResult", app.embedResult.ToString());
                         elem.SetAttribute("addrUrl", app.addrUrl);
+                        elem.SetAttribute("FullScreen", app.FullScreen.ToString());
                         node1.AppendChild(elem);
                         break;
                     } 
@@ -337,6 +339,7 @@ namespace iPlant.IEMS.Util
                                 item.Attributes.GetNamedItem("ProcessID").Value = app.ProcessID.ToString();
                                 item.Attributes.GetNamedItem("MainWindowHandle").Value = app.MainWindowHandle;
                                 item.Attributes.GetNamedItem("embedResult").Value = app.embedResult.ToString();
+                                item.Attributes.GetNamedItem("FullScreen").Value = app.FullScreen.ToString(); 
                                 item.Attributes.GetNamedItem("addrUrl").Value = app.addrUrl;
                                  
                                 break;

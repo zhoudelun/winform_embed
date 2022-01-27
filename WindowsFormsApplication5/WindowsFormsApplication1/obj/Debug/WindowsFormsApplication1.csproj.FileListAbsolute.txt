@@ -6,3 +6,5 @@ E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication1\obj\Debug\WindowsF
 E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+E:\mygitPro\WindowsFormsApplication5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.lucencyForm.resources

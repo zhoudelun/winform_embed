@@ -50,9 +50,10 @@
             this.btnDeleteWorkShop = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbWorkShopTip = new System.Windows.Forms.Label();
             this.tbWorkShopTip = new System.Windows.Forms.TextBox();
+            this.lbWorkShopTip = new System.Windows.Forms.Label();
             this.btnShowAddWorkShop = new System.Windows.Forms.Button();
+            this.cbFullScreen = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +79,7 @@
             this.btnDeleteService.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnDeleteService.Image = global::WindowsFormsApplication5.Properties.Resources.delete1;
             this.btnDeleteService.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteService.Location = new System.Drawing.Point(199, 170);
+            this.btnDeleteService.Location = new System.Drawing.Point(199, 207);
             this.btnDeleteService.Name = "btnDeleteService";
             this.btnDeleteService.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteService.TabIndex = 3;
@@ -175,7 +176,7 @@
             this.btnAddChild.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnAddChild.Image = global::WindowsFormsApplication5.Properties.Resources.保存1;
             this.btnAddChild.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddChild.Location = new System.Drawing.Point(75, 141);
+            this.btnAddChild.Location = new System.Drawing.Point(75, 178);
             this.btnAddChild.Name = "btnAddChild";
             this.btnAddChild.Size = new System.Drawing.Size(75, 23);
             this.btnAddChild.TabIndex = 4;
@@ -189,7 +190,7 @@
             this.btnEditService.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnEditService.Image = global::WindowsFormsApplication5.Properties.Resources.edit1;
             this.btnEditService.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditService.Location = new System.Drawing.Point(75, 170);
+            this.btnEditService.Location = new System.Drawing.Point(75, 207);
             this.btnEditService.Name = "btnEditService";
             this.btnEditService.Size = new System.Drawing.Size(75, 23);
             this.btnEditService.TabIndex = 7;
@@ -294,6 +295,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.cbFullScreen);
             this.panel2.Controls.Add(this.tbWorkShopTip);
             this.panel2.Controls.Add(this.lbWorkShopTip);
             this.panel2.Controls.Add(this.btnEditService);
@@ -309,6 +311,14 @@
             this.panel2.Size = new System.Drawing.Size(358, 234);
             this.panel2.TabIndex = 0;
             // 
+            // tbWorkShopTip
+            // 
+            this.tbWorkShopTip.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbWorkShopTip.Location = new System.Drawing.Point(76, 6);
+            this.tbWorkShopTip.Name = "tbWorkShopTip";
+            this.tbWorkShopTip.Size = new System.Drawing.Size(262, 23);
+            this.tbWorkShopTip.TabIndex = 10;
+            // 
             // lbWorkShopTip
             // 
             this.lbWorkShopTip.AutoSize = true;
@@ -318,14 +328,6 @@
             this.lbWorkShopTip.Size = new System.Drawing.Size(63, 14);
             this.lbWorkShopTip.TabIndex = 9;
             this.lbWorkShopTip.Text = "车间名称";
-            // 
-            // tbWorkShopTip
-            // 
-            this.tbWorkShopTip.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbWorkShopTip.Location = new System.Drawing.Point(76, 6);
-            this.tbWorkShopTip.Name = "tbWorkShopTip";
-            this.tbWorkShopTip.Size = new System.Drawing.Size(262, 23);
-            this.tbWorkShopTip.TabIndex = 10;
             // 
             // btnShowAddWorkShop
             // 
@@ -340,6 +342,18 @@
             this.btnShowAddWorkShop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnShowAddWorkShop.UseVisualStyleBackColor = true;
             this.btnShowAddWorkShop.Click += new System.EventHandler(this.btnAddSetting_Click);
+            // 
+            // cbFullScreen
+            // 
+            this.cbFullScreen.AutoSize = true;
+            this.cbFullScreen.Checked = true;
+            this.cbFullScreen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbFullScreen.Location = new System.Drawing.Point(81, 145);
+            this.cbFullScreen.Name = "cbFullScreen";
+            this.cbFullScreen.Size = new System.Drawing.Size(48, 16);
+            this.cbFullScreen.TabIndex = 11;
+            this.cbFullScreen.Text = "全屏";
+            this.cbFullScreen.UseVisualStyleBackColor = true;
             // 
             // MenuConfigForm
             // 
@@ -396,5 +410,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox tbWorkShopTip;
         private System.Windows.Forms.Label lbWorkShopTip;
+        private System.Windows.Forms.CheckBox cbFullScreen;
     }
 }

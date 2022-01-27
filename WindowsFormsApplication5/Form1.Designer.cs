@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication5
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.appBox = new SmileWei.EmbeddedApp.AppContainer();
-            this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,23 +60,18 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
-            // button1
+            // btnSetting
             // 
-            this.button1.Image = global::WindowsFormsApplication5.Properties.Resources.Setting;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 659);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 28);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "设置";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.btnSetting.Image = global::WindowsFormsApplication5.Properties.Resources.Setting;
+            this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetting.Location = new System.Drawing.Point(0, 659);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(63, 28);
+            this.btnSetting.TabIndex = 2;
+            this.btnSetting.Text = "设置";
+            this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.button1_Click);
             // 
             // appBox
             // 
@@ -89,20 +84,27 @@
             this.appBox.Size = new System.Drawing.Size(920, 683);
             this.appBox.TabIndex = 3;
             // 
-            // Form1
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1070, 683);
             this.Controls.Add(this.appBox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSetting);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "FormMain";
+            this.Text = "ACC.Platform";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -114,7 +116,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSetting;
         private SmileWei.EmbeddedApp.AppContainer appBox; 
     }
 }

@@ -1,0 +1,7 @@
+E:\mygitPro\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe
+E:\mygitPro\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe.config
+E:\mygitPro\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.FormTest.resources
+E:\mygitPro\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Properties.Resources.resources
+E:\mygitPro\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.csproj.GenerateResource.Cache
+E:\mygitPro\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.exe
+E:\mygitPro\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.pdb

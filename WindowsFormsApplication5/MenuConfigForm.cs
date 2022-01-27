@@ -68,6 +68,7 @@ namespace WindowsFormsApplication5
                     txtHandle.Text = acc.MainWindowHandle;
                     btnAddChild.Enabled = true;
                     btnAddRootNode.Enabled = false;
+                    cbFullScreen.Checked = acc.FullScreen == 1;
 
                     HidePanel(panel2);
                     lbTips.Text = "修改服务";
@@ -81,6 +82,7 @@ namespace WindowsFormsApplication5
                     lbAddrUrl.Visible = true;
                     btnChoose.Visible = true;
                     txtAddrUrl.Visible = true;
+                    cbFullScreen.Visible = true;
                     txtServiceName.Visible = true;
                     btnEditService.Visible = true;
                     btnDeleteService.Visible = true;
@@ -180,8 +182,14 @@ namespace WindowsFormsApplication5
                 MessageBox.Show("请选中父节点");
                 return;
                 //treeView1.Nodes.Add(node1);
-            } 
-            
+            }
+
+            int FullScreen = 0;
+            if (cbFullScreen.Checked)
+            {
+                FullScreen  = 1;
+            }
+
             var node1 = new TreeNode();
             node1.Text = name;
             int pid =0;
@@ -199,23 +207,23 @@ namespace WindowsFormsApplication5
                 handle = txtHandle.Text.Trim();
             }
             string key =string.Empty ;
-            node1.Tag = new AddrProcess { key = key, addrUrl = addrUrl, MainWindowHandle = handle, ProcessID = pid, embedResult = 0 };
+            node1.Tag = new AddrProcess { key = key, addrUrl = addrUrl, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, FullScreen = FullScreen };
             int level = treeView1.SelectedNode.Level ;
             if (level == 0)
             {
-                key = treeView1.SelectedNode.Tag.ToString(); 
-                node1.Tag = new AddrProcess { key = key, addrUrl = addrUrl, MainWindowHandle = handle, ProcessID = pid, embedResult = 0 };
+                key = treeView1.SelectedNode.Tag.ToString();
+                node1.Tag = new AddrProcess { key = key, addrUrl = addrUrl, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, FullScreen = FullScreen };
                 treeView1.SelectedNode.Nodes.Add(node1);
             }
             else
             {
                 key = treeView1.SelectedNode.Parent.Tag.ToString();
-                node1.Tag = new AddrProcess { key = key, addrUrl = addrUrl, MainWindowHandle = handle, ProcessID = pid, embedResult = 0 };
+                node1.Tag = new AddrProcess { key = key, addrUrl = addrUrl, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, FullScreen = FullScreen };
                 treeView1.SelectedNode.Parent.Nodes.Add(node1);  
             }
 
             //写入xml
-            MyResourceManager.AddResource(new AccModel { key = key, Child = new AddrProcess[]  { new AddrProcess{ name = name, MainWindowHandle= handle, ProcessID= pid, embedResult=0, addrUrl= addrUrl  }} });
+            MyResourceManager.AddResource(new AccModel { key = key, Child = new AddrProcess[]  { new AddrProcess{ name = name, MainWindowHandle= handle, ProcessID= pid, embedResult=0, addrUrl= addrUrl , FullScreen= FullScreen }} });
 
             //txtHandle.Text = "";
             //txtAddrUrl.Text = "";
@@ -300,9 +308,9 @@ namespace WindowsFormsApplication5
                 if (!string.IsNullOrEmpty(txtHandle.Text.Trim()))
                 {
                     handle = txtHandle.Text.Trim();
-                } 
-                node.Child = new AddrProcess[] { new AddrProcess { name = name, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, addrUrl = txtAddrUrl.Text.Trim() } };
-                tag = new AddrProcess { name = name, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, addrUrl = txtAddrUrl.Text.Trim() };
+                }
+                node.Child = new AddrProcess[] { new AddrProcess { name = name, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, addrUrl = txtAddrUrl.Text.Trim(), FullScreen = cbFullScreen.Checked  ?1:0 } };
+                tag = new AddrProcess { name = name, MainWindowHandle = handle, ProcessID = pid, embedResult = 0, addrUrl = txtAddrUrl.Text.Trim(), FullScreen = cbFullScreen.Checked ? 1 : 0 };
             }
             MyResourceManager.EditResource(node,oldName);
             treeView1.SelectedNode.Text = name;
@@ -402,15 +410,12 @@ namespace WindowsFormsApplication5
         {
             //初始化自定义资源 
             list = MyResourceManager.Init();
-
-            //Form1 form1 = new Form1();
-            //form1.InitButtonMenu3(list);
-            if (TitleChanged != null) 
-                TitleChanged("Test Title"); //委托调用
-
-            
+ 
+            //if (TitleChanged != null) 
+            //    TitleChanged("Test Title"); //委托调用
+             
             DialogResult = DialogResult.OK;
-            
+            this.Close();
         }
     }
 }

@@ -69,9 +69,16 @@
     <Compile Include="MenuConfigForm.Designer.cs">
       <DependentUpon>MenuConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyProcess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceManager.cs" />
+    <Compile Include="SuspensionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuspensionForm.Designer.cs">
+      <DependentUpon>SuspensionForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +95,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SuspensionForm.resx">
+      <DependentUpon>SuspensionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -127,6 +137,7 @@
     <None Include="Resources\停用1.png" />
     <Content Include="Resource\InterfaceResource.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

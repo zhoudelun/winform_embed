@@ -17,11 +17,20 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication5
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(Form1_ShowMenu);
+        }
+        void Form1_ShowMenu(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            { 
+                this.flowLayoutPanel1.Show();
+            } 
         }
 
 
@@ -40,17 +49,7 @@ namespace WindowsFormsApplication5
         /// 初始化菜单
         /// </summary>
        public void InitButtonMenu3(List<AccModel> list )
-        {
-            ////移除所有菜单
-            //foreach (Control item in flowLayoutPanel1.Controls)
-            //{
-            //    if (    item is  FlowLayoutPanel) 
-            //    {
-            //        continue;
-            //    }
-            //    this.flowLayoutPanel1.Controls.Remove(item);
-            //}
-
+       { 
             for (int i = 0; i < flowLayoutPanel1.Controls.Count; i++)
             { 
                 var item = flowLayoutPanel1.Controls[i];
@@ -100,8 +99,8 @@ namespace WindowsFormsApplication5
                     l.Width= this.flowLayoutPanel1 .Width;
                     var child= MakeProcessChild(j,accmodel);
 
-                    bool liveStatus = GetRunning (child);
-                    l.BackColor =liveStatus? Color.Green:Color.Red;
+                    bool liveStatus = GetRunning (child)>0;
+                    l.BackColor =liveStatus? Color.Green:Color.LightGray;
                     l.Text =child.name ;  // i + "label_" + j;
                     l.Name = key + "," + j;// i + "," + j;
                     var cm=new System.Windows.Forms.ContextMenu(); 
@@ -121,10 +120,8 @@ namespace WindowsFormsApplication5
                 }
 
             }
-            this.flowLayoutPanel1.Controls.SetChildIndex(flowLayoutPanel2, 1);
-             
-        }
-          
+            this.flowLayoutPanel1.Controls.SetChildIndex(flowLayoutPanel2, 1); 
+        }  
 
         /// <summary>
         /// 获取服务对象
@@ -161,9 +158,6 @@ namespace WindowsFormsApplication5
                 if(l.Name==name)
                 {
                     if(text=="开启"){
-                        
-                        l.BackColor= Color.Green;
-                        mi.Text = "关闭";
                         //var mi2 = new MenuItem("关闭 ", new EventHandler(CustomItem_Click));
                         //mi2.Name = name;
                         //l.ContextMenu = new ContextMenu(new MenuItem[] {mi2  });
@@ -172,118 +166,46 @@ namespace WindowsFormsApplication5
                         var acc = list.Where(w => w.key == arrayName[0]).FirstOrDefault();
                         var child = MakeProcessChild(int.Parse(arrayName[1]), acc);
                        
-                        DoProcess(child);
+                        int id=  DoProcess(child);
+                        if (id == 0)
+                        {
+                            MessageBox.Show("启动失败");
+                        }
+                        else
+                        { 
+                            l.BackColor = Color.Green;
+                            mi.Text = "关闭";
+                        }
                     }
                     else
                     {
-                        l.BackColor=Color.Red;
-                        mi.Text = "开启";
-                        //l.text="开启":
+                        l.BackColor=Color.LightGray;
+                        mi.Text = "开启"; 
                     }
                     break;
                 }
  	        }
-        }
-
-        /// <summary>
-        /// 初始化菜单
-        /// </summary>
-        void InitButtonMenu(int count  )
-        {
-            int width = 100, height = 25;
-            //添加第一个菜单button
-            var b1 = new Button();
-            b1.Location = new Point(20, 20);
-            b1.Text = "btn" + 1;
-            b1.Width = width;
-            b1.Height = height;
-            this.Controls.Add(b1);
-
-            //添加9个panle
-            for (int i = 1; i < count+1; i++)
-            {
-                var p = new Panel();
-                p.Width = width;
-                p.Height = height*3;
-                p.BorderStyle = BorderStyle.None;
-                p.Location = new Point(20, height + 20 * 3 * i);
-                p.BackColor = Color.Red;
-
-                //每个panle 包含3个label
-                for (int j = 1; j < 3+1; j++)
-                {
-                    var l = new Label();
-                    l.Text = i + "label" + j;
-                    l.Location = new Point(0, 20 * j);
-                    p.Controls.Add(l);
-                }
-                this.Controls.Add(p);
-            }
-             
-            //添加第2-9个button
-            for (int i = 2; i < count + 1; i++)
-            {
-                var b = new Button();
-                b.Location = new Point(20, (height + height  * count * 3  ) + 20 * i);
-                b.Text = "btn" + i;
-                b.Width = width;
-                b.Height = height;
-                this.Controls.Add(b);
-            }
-
-        }
-
-        /// <summary>
-        /// 初始化菜单
-        /// </summary>
-        void InitButtonMenu2(int count = 9)
-        {
-            //添加9个菜单button 
-            int  btnWidth= 75,btnHeight=25 ;
-            for (int i = 1; i < count + 1; i++)
-            {
-                var b = new Button();
-                b.Location = new Point(20,   20 * i);
-                b.Text = "btn" + i;
-                this.Controls.Add(b);
-                btnWidth= b.Width;
-            }  
-            int height= 20*count;
-
-            //添加9个panle
-            for (int i = 1; i < count + 1; i++)
-            {
-                var p = new Panel();
-                p.Width = btnWidth;//和btn等宽
-                p.Height = btnHeight * 3;
-                p.Location = new Point(20,height+ 20 *3* i);
-                p.BackColor = Color.Red;
-
-                //每个panle 包含3个label
-                for (int j = 1; j < 3 + 1; j++)
-                {
-                    var l = new Label();
-                    l.Text = i + "label" + j;
-                    l.Width = btnWidth;
-                    l.Height = btnHeight;
-                    l.Location = new Point(0, 20 * j);
-                    p.Controls.Add(l);
-                }
-                this.Controls.Add(p);
-            }
-
-
-        }
-
+        } 
+ 
         //初始化 
         List<AccModel> list;
+        SuspensionForm suspensionForm = new SuspensionForm();
         private void Form1_Load(object sender, EventArgs e)
-        { 
+        {
+            btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TopMost = true;
+
+      
+
             //初始化自定义资源 
             list = MyResourceManager.Init();
 
             InitButtonMenu3(list);
             MakeNewParent();
+
+            //弹出悬浮窗体
+            suspensionForm.Owner = this;
+            suspensionForm.Show();  
         } 
 
         private void ComBox_SelectedValueChanged(object sender, EventArgs e)
@@ -317,18 +239,7 @@ namespace WindowsFormsApplication5
                     {
                         l.Visible = false;
                     }
-                }
-
-                //if (f is Panel)
-                //{
-                //    var panel = f as Panel;
-                //    foreach (var item in panel.Controls)
-                //    {
-                       
-                //    }
-                    
-                //    break;
-                //} 
+                } 
                 this.flowLayoutPanel1.Controls.SetChildIndex(flowLayoutPanel2, btnIndex);
             }
         }
@@ -367,11 +278,13 @@ namespace WindowsFormsApplication5
                     var arrayName = a.Name.Split(',');
                     var acc = list.Where(w => w.key == arrayName[0]).FirstOrDefault();
                     var child = MakeProcessChild(int.Parse(arrayName[1]), acc);
-                    DoProcess(child);
-                }
-
+                    int id= DoProcess(child);
+                    if (id == 0)
+                    {
+                         MessageBox.Show("打开失败"); 
+                    }
+                } 
             }
-            //MessageBox.Show(a.Text.ToString());
         }
 
         //contextMenuStrip1
@@ -383,14 +296,17 @@ namespace WindowsFormsApplication5
 
         #region 控制显示
         Dictionary<int, string> dict = new Dictionary<int, string>();
-
+  
         /// <summary>
         /// 展示窗体进程
         /// </summary>
         /// <param name="accprocess"></param>
+        /// <param name="fullScreen">全屏</param>
         /// <returns></returns>
-        private int DoProcess(AddrProcess  accprocess)
+        private int DoProcess(AddrProcess accprocess)
         {
+            bool fullScreen = accprocess.FullScreen==1;
+
             string name =accprocess.addrUrl;
             int id = accprocess.ProcessID;
             //var allProcess = System.Diagnostics.Process.GetProcesses(); 
@@ -413,55 +329,87 @@ namespace WindowsFormsApplication5
                 //    }
                 //    appRuning = true;
                 //}
-                if (id > 0 && GetRunning(accprocess))
+                if (id > 0  )
                 {
-                    //var app = System.Diagnostics.Process.GetProcessById(id);
-                    //app.MainModule.FileName;
+                    id = GetRunning(accprocess);
+                    if (id > 0)
+                    { 
+                        var mHandle=new IntPtr(int.Parse(accprocess.MainWindowHandle));
+                        //var app = System.Diagnostics.Process.GetProcessById(id);
+                        //app.MainModule.FileName;
 
-                    //如果进程已经脱离主窗体
-                    if (accprocess.embedResult == 0)
-                    {  
-                       bool embed=  appBox.EmbedAgain(  new IntPtr( int.Parse( accprocess.MainWindowHandle)) );
-                       if (embed)
-                       {
-                           foreach (var item in list)
-                           {
-                               foreach (var c in item.Child)
-                               {
-                                   if (c.ProcessID == id)
-                                   {
-                                       c.embedResult = 1;
-                                       break;
-                                   }
-                               }
-                           }
+                        if (fullScreen)
+                        {
+                            var b =Win32API. ShowWindow(mHandle , 3);//0表示隐藏窗口 
+                            int testTime = 0;
+                            while (!b&&testTime<3)
+                            {
+                                b = Win32API.ShowWindow(mHandle, 3); 
+                                Thread.Sleep(200);
+                                testTime++;
+                            }
+                            if (b)
+                            { 
+                                this.WindowState = FormWindowState.Minimized;
+                                suspensionForm.Show();
+                                appRuning = true;
+                            }
+                            else
+                            {
+                                appRuning = false;
+                            }
+                        }
+                        else
+                        { 
+                            //如果进程已经脱离主窗体
+                            if (accprocess.embedResult == 0)
+                            {
+                                bool embed = appBox.EmbedAgain(mHandle);
+                                if (embed)
+                                {
+                                    foreach (var item in list)
+                                    {
+                                        foreach (var c in item.Child)
+                                        {
+                                            if (c.ProcessID == id)
+                                            {
+                                                c.embedResult = 1;
+                                                break;
+                                            }
+                                        }
+                                    }
 
-                           //显示 
-                           appBox.ShowWindowTest(id, dict);
-                           appRuning = true; 
-                       }
-                       else
-                       {
-                           appRuning = false;
-                       }
-                    }
-                    else
-                    {
-                        //直接显示 
-                        bool show=  appBox.ShowWindowTest(id, dict); 
-                        appRuning = true;  
-
-                    }
+                                    //显示 
+                                    appBox.ShowWindowByPidDict(id, dict);
+                                    appRuning = true;
+                                }
+                                else
+                                {
+                                    appRuning = false;
+                                }
+                            }
+                            else
+                            {
+                                //直接显示 
+                                bool show = appBox.ShowWindowByPidDict(id, dict);
+                                appRuning = true; 
+                            } 
+                        }
+ 
+                    } 
                 }
             }
             catch (Exception ex)
-            {
-                ;
+            { 
             }
             //重新启动
             if (!appRuning)
             {
-                var kv = StartProcess(name);
+                ////kill  
+                //var allProcess = System.Diagnostics.Process.GetProcesses();
+                //var app = allProcess.Where(w => w.ProcessName == name).OrderBy(o => o.StartTime).FirstOrDefault(); 
+       
+                var kv = StartProcess(name,fullScreen);
                 id = kv.Key;
                 if (id != accprocess.ProcessID)
                 {
@@ -473,6 +421,11 @@ namespace WindowsFormsApplication5
                 } 
                 
             }
+            ////进入最大化模式 
+            //this.appBox.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            //this.flowLayoutPanel1.Hide();
+            ////透明度
+            //this.flowLayoutPanel1.BackColor=            System.Drawing.Color.FromArgb(10, Color.LightGray);
             return id; // appRuning = true; 
         }
 
@@ -498,9 +451,7 @@ namespace WindowsFormsApplication5
                 }
             } 
         }
-
-
-
+ 
         /// <summary>
         /// 移出来
         /// </summary>
@@ -530,9 +481,9 @@ namespace WindowsFormsApplication5
         /// <summary>
         /// 获取进程状态
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        bool GetRunning( AddrProcess  accprocess)
+        /// <param name="accprocess"></param>
+        /// <returns>pid</returns>
+        int GetRunning( AddrProcess  accprocess)
         {
             string name =accprocess.addrUrl;
             int id = accprocess.ProcessID; 
@@ -549,9 +500,52 @@ namespace WindowsFormsApplication5
             { 
                 var currentProcess = p.FirstOrDefault(w => w.Id ==  id);
                
-                if (currentProcess == null)  
+                if (currentProcess == null)
                 {
-                    return   false;
+                    IntPtr mainHandle = IntPtr.Zero;
+                    //通过名称直接找pid
+                    foreach (var item in p)
+                    {
+                         //item.ProcessName; 
+                        string path = string.Empty;
+
+                        try
+                        {
+                            path = item.MainModule.FileName; 
+                        }
+                        catch (Exception)
+                        {  
+                            continue;
+                        }
+                            
+                        if (path == accprocess.addrUrl )
+                        {
+                            int pid = item.Id;
+                            if (pid > 0)
+                            { 
+                                mainHandle = new MyProcess().GetMainWindowHandle(pid);
+                                if (mainHandle != IntPtr.Zero)
+                                {
+                                    if (!dict.ContainsKey(pid))
+                                    {
+                                        dict.Add(pid, mainHandle.ToString());
+                                    }
+                                    else
+                                    {
+                                        dict[pid]=  mainHandle.ToString();
+                                    }
+
+                                    //修改xml 
+                                    accprocess.ProcessID = pid;
+                                    accprocess.MainWindowHandle = mainHandle.ToString();
+                                    //accprocess.embedResult = 0;
+                                    MyResourceManager.WriteResource(accprocess);
+                                    return pid;
+                                }
+                            }
+                        }
+                    } 
+                    return   0;
                 }
                 else
                 {
@@ -561,12 +555,12 @@ namespace WindowsFormsApplication5
                     //{ 
                     //    return UpdateList(id);
                     //}
-                    //return false;
+                    //return false; 
                     UpdateList(id);
-                    return true;
+                    return id;
                 }
             }
-            return false;
+            return 0;
             
         } 
 
@@ -593,6 +587,10 @@ namespace WindowsFormsApplication5
                             {
                                 //主窗体崩了需要补充
                                 dict.Add(id, process.MainWindowHandle);
+                            }else
+                            {
+
+                                dict[id] = process.MainWindowHandle;
                             }
                             return true;
                         }
@@ -615,21 +613,97 @@ namespace WindowsFormsApplication5
         {
             return   System.Diagnostics.Process.GetProcessById(id); 
         }
+        
+
+        // Handle Exited event and display process information.
+        private void myProcess_Exited(object sender, System.EventArgs e)
+        {
+            var app = (Process)sender;
+            int pid= app.Id; 
+            string name = "";
+            foreach (AccModel model in list)
+            { 
+                int i=1;
+                foreach (var child in model.Child)
+	            {
+		            if(child.ProcessID==pid){
+                        name= model.key+","+i ; 
+                    }
+                    i++;
+	            } 
+            }
+            if (string.IsNullOrEmpty(name))
+            {
+                return;
+            }
+
+            var controls = this.flowLayoutPanel2.Controls;
+            foreach (var item in controls)
+            {
+                Button l = (Button)item;
+                if (l.Name == name)
+                { 
+                    l.BackColor = Color.LightGray;
+                    MenuItem mi = l.ContextMenu.MenuItems[0];
+                    mi.Text = "开启"; 
+                    break;
+                }
+            }
+        }
+
+
         /// <summary>
         /// 启动一个新的
         /// </summary>
         /// <param name="path"></param>
-        private KeyValuePair<int, string> StartProcess(string path)
+        private KeyValuePair<int, string> StartProcess(string path,bool fullScreen=false)
         {
-            appBox.AppFilename = path;// @"C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe";
-            var kv = appBox.Start();
-            if (appBox.IsStarted)
-            {
-                //txtAppFilename.Text = appBox.AppFilename;
+            var kv=new KeyValuePair<int, string>();
+            if (fullScreen) {
+                Process myProcess = new Process();
+                IntPtr OtherExeWnd = new IntPtr(0); 
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = path;
+                myProcess.StartInfo.CreateNoWindow = false;
+                myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                myProcess.EnableRaisingEvents = true;
+                myProcess.Exited += new EventHandler(myProcess_Exited);
+                var b = myProcess.Start();
+
+                while (myProcess.MainWindowHandle == IntPtr.Zero)
+                {
+                }
+
+                OtherExeWnd = myProcess.MainWindowHandle;
+                 
+                b = Win32API. ShowWindow(OtherExeWnd, 3);//0表示隐藏窗口
+                if (b)
+                {
+                   // this.WindowState = FormWindowState.Minimized;
+                    kv = new KeyValuePair<int, string>(myProcess.Id,myProcess.MainWindowHandle.ToString() );  
+                }
+                else
+                {
+                    kv =  new KeyValuePair<int, string>(0,"启动失败");
+                }
             }
+            else
+            {
+                appBox.AppFilename = path;// @"C:\Users\Administrator\Downloads\article_src\AppControl\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe";
+                kv = appBox.Start(  new EventHandler(myProcess_Exited));
+                if (appBox.IsStarted)
+                {
+                    //txtAppFilename.Text = appBox.AppFilename;
+                }
+            }
+            
             if (!dict.ContainsKey(kv.Key))
             {
                 dict.Add(kv.Key, kv.Value);
+            }
+            else
+            { 
+                dict[kv.Key] = kv.Value;
             }
             return kv;
         }
@@ -685,7 +759,7 @@ namespace WindowsFormsApplication5
                 name = mc.Value.Replace(".exe","");
             }
             Process[] p = System.Diagnostics.Process.GetProcessesByName(name);
-               IntPtr newParent = IntPtr.Zero;
+            IntPtr newParent = IntPtr.Zero;
             if (p != null)
             { 
                 bool exist= false;
@@ -793,5 +867,20 @@ namespace WindowsFormsApplication5
             this.Text = title;
             //InitButtonMenu3(list); 
         }
+         
+        /// <summary>
+        /// 调整窗体
+        /// 修改窗体大小触发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            //显示 
+            int id = 28564;
+            //appBox.ShowWindowByPidDict(id, dict);
+
+        }
+         
     }
 }

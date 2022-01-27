@@ -15,6 +15,7 @@ namespace EmptyForm
         public Form1()
         {
             InitializeComponent();
+            this.label1.Text = "空窗体";
         }
     }
 }

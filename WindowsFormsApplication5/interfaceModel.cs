@@ -71,5 +71,11 @@ namespace iPlant.IEMS.Util
         /// 0未嵌入
         /// </summary>
         public int embedResult { get; set; }
+
+        /// <summary>
+        /// 0不全屏
+        /// 1全屏
+        /// </summary>
+        public int FullScreen { get; set; }
     }
 }

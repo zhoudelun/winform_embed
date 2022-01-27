@@ -1,8 +1,9 @@
 E:\mygitPro\EmptyForm\bin\Debug\EmptyForm.exe.config
 E:\mygitPro\EmptyForm\bin\Debug\EmptyForm.exe
 E:\mygitPro\EmptyForm\bin\Debug\EmptyForm.pdb
-E:\mygitPro\EmptyForm\obj\Debug\EmptyForm.csprojResolveAssemblyReference.cache
 E:\mygitPro\EmptyForm\obj\Debug\EmptyForm.Properties.Resources.resources
 E:\mygitPro\EmptyForm\obj\Debug\EmptyForm.csproj.GenerateResource.Cache
 E:\mygitPro\EmptyForm\obj\Debug\EmptyForm.exe
 E:\mygitPro\EmptyForm\obj\Debug\EmptyForm.pdb
+E:\mygitPro\EmptyForm\obj\Debug\EmptyForm.Form1.resources
+E:\mygitPro\EmptyForm\obj\Debug\EmptyForm.csprojResolveAssemblyReference.cache
